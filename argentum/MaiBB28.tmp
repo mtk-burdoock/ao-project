@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdlq812hiyvdx"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://264boseoei88" path="res://scenes/LobbySceneDesktop.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://buphpinlgi60c" path="res://scenes/LobbySceneMobile.tscn" id="3_3n5x7"]
+[ext_resource type="Texture2D" uid="uid://ci0r8qbtna634" path="res://assets/ui/background_main.png" id="4_adqog"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("server_list", "server_confirm", "server_automatic")]
+script = ExtResource("1")
+initial_scene_desktop = ExtResource("2")
+initial_scene_mobile = ExtResource("3_3n5x7")
+server_list = NodePath("Control/ServerList")
+server_confirm = NodePath("Control/ButtonContinuar")
+server_automatic = NodePath("Control/CheckBox")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("4_adqog")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ServerList" type="ItemList" parent="Control"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
+offset_left = 283.0
+offset_top = 317.0
+offset_right = 563.0
+offset_bottom = 658.0
+
+[node name="CheckBox" type="CheckBox" parent="Control"]
+layout_mode = 0
+offset_left = 574.0
+offset_top = 507.0
+offset_right = 732.0
+offset_bottom = 545.0
+text = "Automatico (5s)"
+text_overrun_behavior = 3
+clip_text = true
+
+[node name="ButtonContinuar" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 555.0
+offset_right = 734.0
+offset_bottom = 601.0
+text = "Continuar"
+
+[node name="ButtonSalir" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 610.0
+offset_right = 734.0
+offset_bottom = 656.0
+text = "Salir"
+
+[connection signal="gui_input" from="Control/ServerList" to="." method="_on_item_list_gui_input"]
+[connection signal="pressed" from="Control/ButtonContinuar" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/ButtonSalir" to="." method="_on_button_2_pressed"]

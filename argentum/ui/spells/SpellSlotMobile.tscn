@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmurtqxsi467o"]
+
+[ext_resource type="FontFile" path="res://assets/fonts/source_code_pro_12.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://bea4kviblh5iv" path="res://assets/inventory/23.png" id="2"]
+[ext_resource type="Script" path="res://ui/spells/SpellSlotMobile.gd" id="3"]
+
+[sub_resource type="StyleBoxEmpty" id="2"]
+
+[node name="SpellSlotMobile" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 90)
+offset_right = 109.0
+offset_bottom = 90.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("2")
+script = ExtResource("3")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1")
+clip_text = true

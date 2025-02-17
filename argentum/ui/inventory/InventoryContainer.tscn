@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://r3nqi7rr447g"]
+
+[ext_resource type="PackedScene" uid="uid://b5j21c1xxi4s5" path="res://ui/inventory/ItemsContainer.tscn" id="1"]
+[ext_resource type="Script" path="res://ui/inventory/InventoryContainer.gd" id="3"]
+
+[node name="InventoryContainer" type="ScrollContainer"]
+custom_minimum_size = Vector2(300, 300)
+offset_right = 300.0
+offset_bottom = 300.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("3")
+
+[node name="ItemsContainer" parent="." instance=ExtResource("1")]
+layout_mode = 2

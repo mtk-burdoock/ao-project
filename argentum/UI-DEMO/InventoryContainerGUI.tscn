@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI-DEMO/InventoryContainerGUI.gd" type="Script" id=2]
+
+[node name="InventoryContainerGUI" type="PanelContainer"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -281.0
+offset_top = 91.0
+offset_right = -11.0
+offset_bottom = 309.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ItemsContainer" type="GridContainer" parent="."]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 263.0
+offset_bottom = 211.0
+theme_override_constants/v_separation = 1
+theme_override_constants/h_separation = 1
+columns = 5

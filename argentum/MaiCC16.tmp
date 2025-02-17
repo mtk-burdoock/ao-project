@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdlq812hiyvdx"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://264boseoei88" path="res://scenes/LobbySceneDesktop.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://buphpinlgi60c" path="res://scenes/LobbySceneMobile.tscn" id="3_3n5x7"]
+[ext_resource type="Texture2D" uid="uid://ci0r8qbtna634" path="res://assets/ui/background_main.png" id="4_adqog"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("server_list", "server_confirm", "server_automatic")]
+script = ExtResource("1")
+initial_scene_desktop = ExtResource("2")
+initial_scene_mobile = ExtResource("3_3n5x7")
+server_list = NodePath("")
+server_confirm = NodePath("")
+server_automatic = NodePath("")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("4_adqog")

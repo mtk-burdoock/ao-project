@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://le8u6o36dsn5"]
+
+[ext_resource type="Script" path="res://ui/inventory/ItemSlot.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bea4kviblh5iv" path="res://assets/inventory/23.png" id="2"]
+[ext_resource type="FontFile" path="res://assets/fonts/source_code_pro_12.tres" id="4"]
+
+[sub_resource type="StyleBoxTexture" id="1"]
+texture = ExtResource("2")
+region_rect = Rect2(0, 0, 67, 67)
+
+[node name="ItemSlot" type="PanelContainer"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("1")
+script = ExtResource("1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="IconTexture" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+stretch_mode = 4
+
+[node name="SelectedLabel" type="Label" parent="."]
+self_modulate = Color(0.661437, 0.627072, 0, 1)
+layout_mode = 2
+size_flags_vertical = 8
+text = "S"
+horizontal_alignment = 2
+clip_text = true
+
+[node name="EquippedLabel" type="Label" parent="."]
+self_modulate = Color(0.121569, 0.87451, 0.203922, 1)
+layout_mode = 2
+size_flags_vertical = 8
+text = "E"
+clip_text = true
+
+[node name="QuantityLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("4")
+text = "10000"
+clip_text = true

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AnimationData" load_steps=2 format=3 uid="uid://dql30381lkq5s"]
+
+[ext_resource type="Script" path="res://engine/data/AnimationData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+head_offset_x = 0
+head_offset_y = -28.0

@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkmf3r5qpjnkw"]
+
+[ext_resource type="Theme" uid="uid://bh1bkbf677702" path="res://assets/themeMobile.theme" id="1_8th4y"]
+[ext_resource type="Script" path="res://ui/main_panel/MainPanelMobile.gd" id="2_iiolw"]
+[ext_resource type="PackedScene" uid="uid://xgn3n5nk86u2" path="res://ui/statsbar/StatsBars.tscn" id="3_5qmyr"]
+[ext_resource type="Texture2D" uid="uid://d07ohqbtm1g7a" path="res://assets/graphics/531.png" id="4_vaxwd"]
+[ext_resource type="PackedScene" uid="uid://dwuptfm1phnlt" path="res://ui/inventory/InventoryContainerMobile.tscn" id="5_5y7xh"]
+[ext_resource type="PackedScene" path="res://ui/spells/SpellContainerMobile.tscn" id="6_6oy7y"]
+
+[node name="MainPanelMobile" type="Control"]
+custom_minimum_size = Vector2(0, 182)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -511.0
+offset_top = -189.0
+offset_right = 532.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_8th4y")
+script = ExtResource("2_iiolw")
+
+[node name="StatsPanel" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(280, 160)
+layout_direction = 1
+layout_mode = 2
+offset_right = 293.0
+offset_bottom = 185.0
+auto_translate = false
+localize_numeral_system = false
+theme_override_constants/separation = 0
+
+[node name="StatsBars" parent="StatsPanel" instance=ExtResource("3_5qmyr")]
+layout_mode = 2
+
+[node name="BtnSwitchPanel" type="TextureButton" parent="StatsPanel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("4_vaxwd")
+stretch_mode = 3
+
+[node name="InventoryContainerMobile" parent="." instance=ExtResource("5_5y7xh")]
+layout_mode = 2
+offset_left = 296.0
+offset_top = -1.0
+offset_right = 1040.0
+offset_bottom = 184.0
+
+[node name="SpellContainerMobile" parent="." instance=ExtResource("6_6oy7y")]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="StatsPanel/BtnSwitchPanel" to="." method="_on_BtnSwitchPanel_pressed"]

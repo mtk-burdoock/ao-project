@@ -1,0 +1,143 @@
+[gd_scene load_steps=11 format=3 uid="uid://xgn3n5nk86u2"]
+
+[ext_resource type="Theme" uid="uid://bh1bkbf677702" path="res://assets/themeMobile.theme" id="1_hklmb"]
+[ext_resource type="Script" path="res://ui/statsbar/StatsBars.gd" id="1_l2asq"]
+[ext_resource type="Texture2D" uid="uid://b3f7cb0qkxjyn" path="res://assets/graphics/510.png" id="3_b7vwc"]
+[ext_resource type="FontFile" uid="uid://cu3na0k3m1y15" path="res://assets/fonts/source_code_pro/SourceCodePro-Regular.ttf" id="4_0eura"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ds3ap"]
+bg_color = Color(0.6, 0.0431373, 0.0823529, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6hd7"]
+bg_color = Color(0.37861, 0.22848, 0.520978, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0214346, 0.0214346, 0.0214346, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3rrj"]
+bg_color = Color(0.622263, 0.623739, 0.239528, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7v67"]
+bg_color = Color(0.609223, 0.611562, 0.477142, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5a5l"]
+bg_color = Color(0.241752, 0.641731, 0.861636, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0177324, 0.0177324, 0.0177324, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="FontFile" id="FontFile_e4bjd"]
+fallbacks = Array[Font]([ExtResource("4_0eura")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/20/0 = Vector2(0, 0)
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/20/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/20/0/kerning_overrides/20/0 = Vector2(0, 0)
+
+[node name="StatsBars" type="VBoxContainer"]
+custom_minimum_size = Vector2(260, 125)
+offset_right = 260.0
+offset_bottom = 170.0
+theme = ExtResource("1_hklmb")
+alignment = 1
+script = ExtResource("1_l2asq")
+
+[node name="ProgressBarHP" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ds3ap")
+
+[node name="ProgressBarMP" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_i6hd7")
+
+[node name="ProgressBarSTA" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_s3rrj")
+
+[node name="HBoxHealth" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(205, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="ProgressBarHAM" type="ProgressBar" parent="HBoxHealth"]
+custom_minimum_size = Vector2(130, 30)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_e7v67")
+
+[node name="ProgressBarSED" type="ProgressBar" parent="HBoxHealth"]
+custom_minimum_size = Vector2(130, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_v5a5l")
+
+[node name="HBoxGold" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="GoldTexture" type="TextureRect" parent="HBoxGold"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_b7vwc")
+stretch_mode = 3
+
+[node name="GoldLabel" type="Label" parent="HBoxGold"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_e4bjd")
+text = "100000000000000"
+clip_text = true

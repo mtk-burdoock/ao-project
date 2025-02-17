@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://f5vxlu2tctow"]
+
+[ext_resource type="Script" path="res://ui/main_panel/MainPanelDesktop.gd" id="1_ato4w"]
+[ext_resource type="Theme" path="res://assets/theme.theme" id="2_h4svx"]
+[ext_resource type="PackedScene" uid="uid://o0lia58mrfw6" path="res://ui/spells/SpellContainerDesktop.tscn" id="3_xev8r"]
+[ext_resource type="PackedScene" uid="uid://r3nqi7rr447g" path="res://ui/inventory/InventoryContainer.tscn" id="4_ndm3u"]
+[ext_resource type="PackedScene" uid="uid://xgn3n5nk86u2" path="res://ui/statsbar/StatsBars.tscn" id="5_2bc1l"]
+
+[node name="MainPanel" type="Control"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 310.0
+offset_bottom = 720.0
+size_flags_vertical = 3
+script = ExtResource("1_ato4w")
+
+[node name="PanelContainerTop" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+offset_right = 310.0
+offset_bottom = 354.0
+
+[node name="MidlePanel" type="TabContainer" parent="PanelContainerTop"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_h4svx")
+tab_alignment = 1
+current_tab = 1
+tab_focus_mode = 1
+
+[node name="Spells" parent="PanelContainerTop/MidlePanel" instance=ExtResource("3_xev8r")]
+visible = false
+layout_mode = 2
+
+[node name="Inventario" parent="PanelContainerTop/MidlePanel" instance=ExtResource("4_ndm3u")]
+custom_minimum_size = Vector2(300, 313)
+layout_mode = 2
+
+[node name="PanelContainerBottom" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+offset_top = 354.0
+offset_right = 310.0
+offset_bottom = 720.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainerBottom"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UserLevel" type="Label" parent="PanelContainerBottom/VBoxContainer2"]
+layout_mode = 2
+text = "Nivel: 999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UserExperiece" type="Label" parent="PanelContainerBottom/VBoxContainer2"]
+layout_mode = 2
+text = "999999/9999999"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="StatsBars" parent="PanelContainerBottom/VBoxContainer2" instance=ExtResource("5_2bc1l")]
+layout_mode = 2

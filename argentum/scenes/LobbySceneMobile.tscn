@@ -1,0 +1,247 @@
+[gd_scene load_steps=10 format=3 uid="uid://buphpinlgi60c"]
+
+[ext_resource type="Script" path="res://scenes/LobbyScene.gd" id="1_2nqx2"]
+[ext_resource type="PackedScene" uid="uid://dwuptfm1phnlt" path="res://ui/inventory/InventoryContainerMobile.tscn" id="2_c8jww"]
+[ext_resource type="PackedScene" uid="uid://ce2b7ta1mef02" path="res://scenes/GameSceneMobile.tscn" id="3_emslq"]
+[ext_resource type="PackedScene" uid="uid://csx6jcm4c5oxu" path="res://scenes/GameSceneDesktop.tscn" id="4_j872d"]
+[ext_resource type="Texture2D" uid="uid://d0jtkawhllht7" path="res://assets/ui/background_menu.png" id="4_ji7ds"]
+[ext_resource type="FontFile" uid="uid://tlecdggw2uka" path="res://assets/fonts/source_code_pro/SourceCodePro-Black.ttf" id="6_06j1o"]
+[ext_resource type="Theme" uid="uid://bh1bkbf677702" path="res://assets/themeMobile.theme" id="6_nlfeb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_66qcm"]
+line_spacing = 4.0
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v4nxp"]
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="LobbyScene" type="Node" node_paths=PackedStringArray("server_ip", "server_port", "music_active", "label_error")]
+script = ExtResource("1_2nqx2")
+create_scene_mobile = ExtResource("2_c8jww")
+game_scene_mobile = ExtResource("3_emslq")
+game_scene_desktop = ExtResource("4_j872d")
+server_ip = NodePath("Servidor")
+server_port = NodePath("Puerto")
+music_active = NodePath("CheckMusicOn")
+label_error = NodePath("LabelError")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640.25, 359.75)
+scale = Vector2(1.11241, 0.943359)
+texture = ExtResource("4_ji7ds")
+
+[node name="BtnExit" type="Button" parent="."]
+custom_minimum_size = Vector2(160, 40)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = 250.0
+offset_right = 183.0
+offset_bottom = 290.4
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_nlfeb")
+text = "SALIR
+"
+
+[node name="BtnConnect" type="Button" parent="."]
+custom_minimum_size = Vector2(175, 40)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = 153.0
+offset_right = 183.0
+offset_bottom = 193.4
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_nlfeb")
+text = "INGRESAR
+"
+
+[node name="BtnCreate" type="Button" parent="."]
+custom_minimum_size = Vector2(175, 40)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = 250.0
+offset_right = -27.0
+offset_bottom = 290.4
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_nlfeb")
+text = "CUENTA
+"
+
+[node name="LabelUserName" type="Label" parent="."]
+offset_left = 435.0
+offset_top = 418.0
+offset_right = 494.0
+offset_bottom = 448.0
+theme = ExtResource("6_nlfeb")
+text = "EMAIL"
+label_settings = SubResource("LabelSettings_66qcm")
+
+[node name="UserName" type="LineEdit" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = 89.0
+offset_right = -27.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_nlfeb")
+theme_override_font_sizes/font_size = 14
+placeholder_text = "correo@ejemplo.com"
+
+[node name="UserPassword" type="LineEdit" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = 89.0
+offset_right = 183.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_nlfeb")
+theme_override_font_sizes/font_size = 14
+placeholder_text = "contraseña"
+secret = true
+
+[node name="LabelUserPassword" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = 59.0
+offset_right = 175.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_nlfeb")
+text = "Contraseña"
+label_settings = SubResource("LabelSettings_66qcm")
+
+[node name="LabelServidor" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 30)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = 214.0
+offset_right = -102.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 7
+text = "Servidor:"
+label_settings = SubResource("LabelSettings_66qcm")
+
+[node name="Servidor" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(100, 20)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 216.0
+offset_right = -28.0
+offset_bottom = 240.4
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_nlfeb")
+theme_override_font_sizes/font_size = 12
+text = "127.0.0.1"
+
+[node name="LabelPuerto" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 30)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = 214.0
+offset_right = 112.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Puerto:"
+label_settings = SubResource("LabelSettings_66qcm")
+
+[node name="Puerto" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(99, 20)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 82.0
+offset_top = 216.0
+offset_right = 181.0
+offset_bottom = 240.4
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_nlfeb")
+theme_override_font_sizes/font_size = 12
+text = "7666"
+
+[node name="LabelCheckMusicOn" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 89.0
+offset_top = 23.0
+offset_right = 157.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_nlfeb")
+text = "Música"
+label_settings = SubResource("LabelSettings_66qcm")
+
+[node name="CheckMusicOn" type="CheckButton" parent="."]
+offset_left = 795.0
+offset_top = 387.0
+offset_right = 839.4
+offset_bottom = 411.4
+theme = ExtResource("6_nlfeb")
+theme_override_fonts/font = ExtResource("6_06j1o")
+
+[node name="LabelError" type="Label" parent="."]
+offset_left = 411.0
+offset_top = 489.0
+offset_right = 640.0
+offset_bottom = 553.0
+label_settings = SubResource("LabelSettings_v4nxp")
+horizontal_alignment = 1
+autowrap_mode = 2
+justification_flags = 171
+
+[connection signal="pressed" from="BtnExit" to="." method="_on_BtnExit_pressed"]
+[connection signal="pressed" from="BtnConnect" to="." method="_on_BtnConnect_pressed"]
+[connection signal="pressed" from="BtnCreate" to="." method="_on_BtnCreate_pressed"]

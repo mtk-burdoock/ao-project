@@ -1,0 +1,108 @@
+[gd_scene load_steps=3 format=3 uid="uid://bubmxo6ismitp"]
+
+[ext_resource type="FontFile" path="res://assets/fonts/source_code_pro_12.tres" id="1"]
+
+[sub_resource type="GDScript" id="GDScript_470dw"]
+script/source = "extends VBoxContainer
+
+var _player_data:PlayerData
+var protocol:GameProtocol
+var spell_selected = 0
+
+@onready var spellList = find_child(\"SpellList\")
+ 
+func initialize(player_data:PlayerData, protocol:GameProtocol) -> void:
+	self._player_data = player_data
+	self.protocol = protocol
+	
+	for i in player_data.stats.spells:
+		spellList.add_item(i)
+		
+	player_data.stats.connect(\"change_spell_slot\", Callable(self, \"_on_change_spell_slot\"))
+
+func _on_BtnCast_pressed() -> void:
+	if spellList.get_item_text(spell_selected) != \"(None)\":
+		protocol.write_cast_spell(spell_selected + 1)
+		protocol.write_work(Global.eSkill.Magia)
+ 
+func _on_BtnUp_pressed() -> void:
+	if spell_selected <= 0: return
+	var new_text = _player_data.stats.spells[spell_selected - 1]
+	var old_text = _player_data.stats.spells[spell_selected]
+	
+	_player_data.stats.set_spell(spell_selected - 1, old_text)
+	_player_data.stats.set_spell(spell_selected,     new_text)
+	
+	protocol.write_move_sell(true,  spell_selected + 1)
+	spellList.select(spell_selected - 1)
+	
+	spell_selected -= 1
+ 
+func _on_BtnDown_pressed() -> void:
+	if spell_selected == Global.MAXHECHI - 1: return
+	
+	var old_text = _player_data.stats.spells[spell_selected]
+	var new_text = _player_data.stats.spells[spell_selected + 1]
+	
+	_player_data.stats.set_spell(spell_selected + 1, old_text)
+	_player_data.stats.set_spell(spell_selected,     new_text)
+	
+	protocol.write_move_sell(false,  spell_selected + 1)
+	spellList.select(spell_selected + 1)
+	
+	spell_selected += 1
+
+func _on_change_spell_slot(slot:int, name:String) -> void:
+	spellList.set_item_text(slot, name)
+ 
+func _on_SpellList_item_selected(index: int) -> void:
+	spell_selected = index
+	
+func _on_BtnInfo_pressed() -> void:
+	protocol.write_spell_info(spell_selected + 1)
+"
+
+[node name="SpellContainer" type="VBoxContainer"]
+offset_right = 177.0
+offset_bottom = 242.0
+script = SubResource("GDScript_470dw")
+
+[node name="SpellList" type="ItemList" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+
+[node name="VBoxBtns" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="BtnCast" type="Button" parent="VBoxBtns"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Lanzar"
+
+[node name="BtnInfo" type="Button" parent="VBoxBtns"]
+layout_mode = 2
+focus_mode = 0
+text = "I"
+
+[node name="VBoxBtnsUpDown" type="VBoxContainer" parent="VBoxBtns"]
+layout_mode = 2
+
+[node name="BtnUp" type="Button" parent="VBoxBtns/VBoxBtnsUpDown"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1")
+text = "▲"
+
+[node name="BtnDown" type="Button" parent="VBoxBtns/VBoxBtnsUpDown"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1")
+text = "▼"
+
+[connection signal="item_selected" from="SpellList" to="." method="_on_SpellList_item_selected"]
+[connection signal="pressed" from="VBoxBtns/BtnCast" to="." method="_on_BtnCast_pressed"]
+[connection signal="pressed" from="VBoxBtns/BtnInfo" to="." method="_on_BtnInfo_pressed"]
+[connection signal="pressed" from="VBoxBtns/VBoxBtnsUpDown/BtnUp" to="." method="_on_BtnUp_pressed"]
+[connection signal="pressed" from="VBoxBtns/VBoxBtnsUpDown/BtnDown" to="." method="_on_BtnDown_pressed"]

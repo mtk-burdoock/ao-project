@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://csx6jcm4c5oxu"]
+
+[ext_resource type="Script" path="res://scenes/GameScene.gd" id="1_1iynk"]
+[ext_resource type="PackedScene" uid="uid://k7gwyvd0gtoe" path="res://entities/character/Character.tscn" id="2_p5xn1"]
+[ext_resource type="Script" path="res://scenes/UI.gd" id="3_gu4cf"]
+[ext_resource type="Script" path="res://scenes/WorldContainer.gd" id="4_2ltwx"]
+[ext_resource type="Script" path="res://scenes/MapContainer.gd" id="5_e4jfy"]
+[ext_resource type="PackedScene" uid="uid://f5vxlu2tctow" path="res://ui/main_panel/MainPanelDesktop.tscn" id="6_5vck1"]
+
+[node name="GameSceneDesktop" type="Node" node_paths=PackedStringArray("_main_camera", "_fpsLabel", "_map_container", "_main_panel", "_rich_text_label")]
+script = ExtResource("1_1iynk")
+character_scene = ExtResource("2_p5xn1")
+_main_camera = NodePath("UI/VBoxContainer/WorldContainer/World/MainCamera")
+_fpsLabel = NodePath("UI/FPSLabel")
+_map_container = NodePath("UI/VBoxContainer/WorldContainer/World/MapContainer")
+_main_panel = NodePath("UI/VBoxContainer/MainPanel")
+_rich_text_label = NodePath("UI/RichTextLabel")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("3_gu4cf")
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="WorldContainer" type="SubViewportContainer" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(965, 720)
+layout_mode = 2
+stretch = true
+script = ExtResource("4_2ltwx")
+
+[node name="World" type="SubViewport" parent="UI/VBoxContainer/WorldContainer"]
+handle_input_locally = false
+audio_listener_enable_2d = true
+size = Vector2i(965, 720)
+render_target_update_mode = 4
+
+[node name="MainCamera" type="Camera2D" parent="UI/VBoxContainer/WorldContainer/World"]
+
+[node name="MapContainer" type="Node2D" parent="UI/VBoxContainer/WorldContainer/World"]
+script = ExtResource("5_e4jfy")
+
+[node name="MainPanel" parent="UI/VBoxContainer" instance=ExtResource("6_5vck1")]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+
+[node name="FPSLabel" type="Label" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -175.0
+offset_bottom = 63.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI"]
+custom_minimum_size = Vector2(0, 120)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+text = "
+"
+scroll_following = true

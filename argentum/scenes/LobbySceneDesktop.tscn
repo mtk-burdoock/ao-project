@@ -1,0 +1,249 @@
+[gd_scene load_steps=10 format=3 uid="uid://264boseoei88"]
+
+[ext_resource type="Script" path="res://scenes/LobbyScene.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://lhnk4gaokq4c" path="res://scenes/CreateCharacter.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://ce2b7ta1mef02" path="res://scenes/GameSceneMobile.tscn" id="3_ik7bk"]
+[ext_resource type="PackedScene" uid="uid://csx6jcm4c5oxu" path="res://scenes/GameSceneDesktop.tscn" id="4_0ksby"]
+[ext_resource type="Theme" uid="uid://bh1bkbf677702" path="res://assets/themeMobile.theme" id="5_leh20"]
+[ext_resource type="Texture2D" uid="uid://d0jtkawhllht7" path="res://assets/ui/background_menu.png" id="5_od5ws"]
+[ext_resource type="FontFile" uid="uid://tlecdggw2uka" path="res://assets/fonts/source_code_pro/SourceCodePro-Black.ttf" id="6_grncp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xkqdl"]
+font_color = Color(0.0142752, 0.0142752, 0.0142752, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_newie"]
+line_spacing = 4.0
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="LobbyScene" type="Node" node_paths=PackedStringArray("server_ip", "server_port", "music_active", "label_error")]
+script = ExtResource("1")
+create_scene_mobile = ExtResource("2")
+game_scene_mobile = ExtResource("3_ik7bk")
+create_scene_desktop = ExtResource("2")
+game_scene_desktop = ExtResource("4_0ksby")
+server_ip = NodePath("Servidor")
+server_port = NodePath("Puerto")
+music_active = NodePath("CheckMusicOn")
+label_error = NodePath("LabelError")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(0.998392, 0.999457)
+texture = ExtResource("5_od5ws")
+
+[node name="LabelError" type="Label" parent="."]
+offset_left = 425.0
+offset_top = 508.0
+offset_right = 637.0
+offset_bottom = 576.0
+label_settings = SubResource("LabelSettings_xkqdl")
+horizontal_alignment = 1
+autowrap_mode = 2
+justification_flags = 171
+
+[node name="BtnExit" type="Button" parent="."]
+custom_minimum_size = Vector2(160, 40)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 11.0
+offset_top = 265.0
+offset_right = 186.0
+offset_bottom = 305.4
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_leh20")
+text = "SALIR
+"
+
+[node name="BtnConnect" type="Button" parent="."]
+custom_minimum_size = Vector2(175, 40)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 11.0
+offset_top = 168.0
+offset_right = 186.0
+offset_bottom = 208.4
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_leh20")
+text = "INGRESAR
+"
+
+[node name="BtnCreate" type="Button" parent="."]
+custom_minimum_size = Vector2(175, 40)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = 265.0
+offset_right = -24.0
+offset_bottom = 305.4
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_leh20")
+text = "CUENTA
+"
+
+[node name="LabelUserName" type="Label" parent="."]
+offset_left = 438.0
+offset_top = 433.0
+offset_right = 497.0
+offset_bottom = 463.0
+theme = ExtResource("5_leh20")
+text = "EMAIL"
+label_settings = SubResource("LabelSettings_newie")
+
+[node name="UserName" type="LineEdit" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = 104.0
+offset_right = -24.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_leh20")
+theme_override_font_sizes/font_size = 14
+placeholder_text = "correo@ejemplo.com"
+
+[node name="UserPassword" type="LineEdit" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 11.0
+offset_top = 104.0
+offset_right = 186.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_leh20")
+theme_override_font_sizes/font_size = 14
+placeholder_text = "contraseña"
+secret = true
+
+[node name="LabelUserPassword" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = 74.0
+offset_right = 178.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_leh20")
+text = "Contraseña"
+label_settings = SubResource("LabelSettings_newie")
+
+[node name="LabelServidor" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 30)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = 229.0
+offset_right = -99.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 7
+text = "Servidor:"
+label_settings = SubResource("LabelSettings_newie")
+
+[node name="Servidor" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(100, 20)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = 231.0
+offset_right = -25.0
+offset_bottom = 255.4
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_leh20")
+theme_override_font_sizes/font_size = 12
+text = "127.0.0.1"
+
+[node name="LabelPuerto" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 30)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = 229.0
+offset_right = 115.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Puerto:"
+label_settings = SubResource("LabelSettings_newie")
+
+[node name="Puerto" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(99, 20)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 85.0
+offset_top = 231.0
+offset_right = 184.0
+offset_bottom = 255.4
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_leh20")
+theme_override_font_sizes/font_size = 12
+text = "7666"
+
+[node name="LabelCheckMusicOn" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 92.0
+offset_top = 38.0
+offset_right = 160.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_leh20")
+text = "Música"
+label_settings = SubResource("LabelSettings_newie")
+
+[node name="CheckMusicOn" type="CheckButton" parent="."]
+offset_left = 798.0
+offset_top = 402.0
+offset_right = 842.4
+offset_bottom = 426.4
+theme = ExtResource("5_leh20")
+theme_override_fonts/font = ExtResource("6_grncp")
+
+[connection signal="pressed" from="BtnExit" to="." method="_on_BtnExit_pressed"]
+[connection signal="pressed" from="BtnConnect" to="." method="_on_BtnConnect_pressed"]
+[connection signal="pressed" from="BtnCreate" to="." method="_on_BtnCreate_pressed"]

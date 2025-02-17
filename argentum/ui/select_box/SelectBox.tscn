@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://6t50e7is4x7g"]
+
+[ext_resource type="Texture2D" uid="uid://byafo7irelt7g" path="res://assets/ui/ArkanaLook.png" id="1"]
+[ext_resource type="Script" path="res://ui/select_box/SelectBox.gd" id="2"]
+[ext_resource type="FontFile" uid="uid://cu3na0k3m1y15" path="res://assets/fonts/source_code_pro/SourceCodePro-Regular.ttf" id="3"]
+
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(82, 354, 15, 14)
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(82, 384, 15, 14)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1")
+region = Rect2(82, 369, 15, 14)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("1")
+region = Rect2(73, 81, 32, 32)
+
+[sub_resource type="FontFile" id="6"]
+fallbacks = Array[Font]([ExtResource("3")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("1")
+region = Rect2(0, 491, 21, 21)
+
+[node name="SelectBox" type="HBoxContainer"]
+offset_right = 275.0
+offset_bottom = 45.0
+script = ExtResource("2")
+
+[node name="BtnPrev" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+texture_normal = SubResource("1")
+texture_pressed = SubResource("2")
+texture_hover = SubResource("3")
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Background" type="TextureRect" parent="MarginContainer"]
+self_modulate = Color(0.764706, 0.705882, 0.705882, 1)
+custom_minimum_size = Vector2(177, 45)
+layout_mode = 2
+texture = SubResource("4")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+theme_override_fonts/font = SubResource("6")
+
+[node name="Border" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = SubResource("5")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="BtnNext" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+texture_normal = SubResource("1")
+texture_pressed = SubResource("2")
+texture_hover = SubResource("3")
+stretch_mode = 5
+flip_h = true
+
+[connection signal="pressed" from="BtnPrev" to="." method="_on_BtnPrev_pressed"]
+[connection signal="pressed" from="BtnNext" to="." method="_on_BtnNext_pressed"]

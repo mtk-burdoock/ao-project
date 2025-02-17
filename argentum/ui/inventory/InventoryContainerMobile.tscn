@@ -1,0 +1,216 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwuptfm1phnlt"]
+
+[ext_resource type="PackedScene" uid="uid://le8u6o36dsn5" path="res://ui/inventory/ItemSlot.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://bea4kviblh5iv" path="res://assets/inventory/23.png" id="2"]
+[ext_resource type="Script" path="res://ui/inventory/InventoryContainerMobile.gd" id="3"]
+[ext_resource type="Script" path="res://ui/virtual_joystick/TouchButton.gd" id="4"]
+
+[sub_resource type="StyleBoxTexture" id="1"]
+texture = ExtResource("2")
+region_rect = Rect2(0, 0, 67, 67)
+
+[node name="InventoryContainerMobile" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 185)
+offset_left = 300.0
+offset_right = 1024.0
+offset_bottom = 180.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+script = ExtResource("3")
+
+[node name="InventoryItems" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="InventoryItems"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.219608, 0.184314, 0.184314, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InventoryItems/ColorRect"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GridContainer" type="GridContainer" parent="InventoryItems/ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 10
+
+[node name="ItemSlot" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot2" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot3" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot4" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot5" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot6" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot7" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot8" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot9" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot10" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot11" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot12" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot13" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot14" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot15" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot16" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot17" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot18" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot19" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="ItemSlot20" parent="InventoryItems/ColorRect/HBoxContainer/GridContainer" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("1")
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Top" type="HBoxContainer" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="BtnPickup" type="Button" parent="Buttons/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "A"
+script = ExtResource("4")
+
+[node name="BtnAttack" type="Button" parent="Buttons/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Ctrl"
+script = ExtResource("4")
+
+[node name="Bottom" type="HBoxContainer" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="BtnSpell" type="Button" parent="Buttons/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "C"
+script = ExtResource("4")
+
+[node name="BtnUsar" type="Button" parent="Buttons/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "U"
+script = ExtResource("4")
+
+[node name="BtnLag" type="Button" parent="Buttons/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "L"
+script = ExtResource("4")
+
+[connection signal="pressed" from="Buttons/Top/BtnPickup" to="." method="_on_BtnPickup_pressed"]
+[connection signal="pressed" from="Buttons/Top/BtnAttack" to="." method="_on_BtnAttack_pressed"]
+[connection signal="pressed" from="Buttons/Bottom/BtnUsar" to="." method="_on_BtnUsar_pressed"]
+[connection signal="pressed" from="Buttons/Bottom/BtnLag" to="." method="_on_BtnLag_pressed"]
